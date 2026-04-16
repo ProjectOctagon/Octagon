@@ -6,4 +6,4 @@ from typing import Optional
 class GenerateResponsePpt:
     success: bool
     file_url: Optional[str] = None
-    message = str = ""
+    message: str = ""
