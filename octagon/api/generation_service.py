@@ -18,6 +18,9 @@ class GenerationService:
             include_externals = request.include_externals,
             include_trainees = request.include_trainees,
         )
+        if presentation_model is None:
+            raise ValueError("Failed to build presentation model")
+            
 
 
         generated_file = self.ppt_service.generate_presentation(
@@ -25,6 +28,8 @@ class GenerationService:
             template_name = request.template_name,
             output_name = request.output_name,
         )
+        if generated_file is None:
+            raise ValueError("Failed to generate presentation file URL")
 
 
         return generated_file
