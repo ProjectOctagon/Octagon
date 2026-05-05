@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from typing import Optional
 
 
-
+@dataclass
 class GenerateRequestPpt:
     org_id: str
     include_externals: bool = False
