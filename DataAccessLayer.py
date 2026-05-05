@@ -10,14 +10,15 @@ class DataAccessLayer:
         return list(Organization.objects(parent=parent_id, isDeleted=False))
 
     @staticmethod
-    def get_people_in_org(personnel_numbers):
+    def get_people_by_ids(personnel_numbers):
+        if not personnel_numbers:
+            return []
         return list(Person.objects(PERSONNEL_NUMBER__in=personnel_numbers))
 
     @staticmethod
     def get_org_with_hierarchy(org_id):
-        org = Organization.objects(org_id=org_id).first()
-        if not org:
+        root_org = Organization.objects(org_id=org_id, isDeleted=False).first()
+        if not root_org:
             return []
-        
         descendants = Organization.objects(ancestors=org_id, isDeleted=False)
-        return [org] + list(descendants)
+        return [root_org] + list(descendants)
