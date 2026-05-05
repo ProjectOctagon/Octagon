@@ -13,7 +13,7 @@ class GenerationService:
             raise ValueError(f"No organization found for org_id= {request.org_id}")
 
 
-        presenation_model = self.mapping_service.build_presentation_model(
+        presentation_model = self.mapping_service.build_presentation_model(
             orgs = orgs,
             include_externals = request.include_externals,
             include_trainees = request.include_trainees,
