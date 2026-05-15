@@ -23,6 +23,6 @@ class Organization(Document):
     parent = ReferenceField('Organization')
     ancestors = ListField(ReferenceField('Organization'))
     children = ListField(ReferenceField('Organization'))
-    people = ListField(ReferenceField(Person))  
+    people = ListField(ReferenceField('Person'))  
     isDeleted = BooleanField(default=False)
     sap_org_id = StringField()
