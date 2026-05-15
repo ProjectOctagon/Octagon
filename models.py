@@ -20,9 +20,9 @@ class Organization(Document):
     meta = {'collection': 'organizations'}
     org_id = StringField(required=True, unique=True)
     name = StringField()
-    parent = StringField()
-    ancestors = ListField(StringField())
-    people = ListField(StringField())  
-    children = ListField(StringField())
+    parent = ReferenceField('Organization')
+    ancestors = ListField(ReferenceField('Organization'))
+    children = ListField(ReferenceField('Organization'))
+    people = ListField(ReferenceField(Person))  
     isDeleted = BooleanField(default=False)
     sap_org_id = StringField()
